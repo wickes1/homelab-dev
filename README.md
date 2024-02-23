@@ -8,6 +8,7 @@
   - [Getting Started ](#getting-started-)
   - [Current Tech Stack](#current-tech-stack)
   - [Tools](#tools)
+  - [Stuff deployed behind the scenes](#stuff-deployed-behind-the-scenes)
 
 ## About <a name = "about"></a>
 
@@ -33,3 +34,10 @@ You can't really get started with this repository, but you can use the code and 
 - [Kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)
 - [Helm](https://github.com/helm/helm)
 - [k9s](https://github.com/derailed/k9s)
+
+## Stuff deployed behind the scenes
+
+- [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome)
+- [PiKVM](https://github.com/pikvm/pikvm)
+- [PiVPN](https://github.com/pivpn/pivpn)
+- [wg-easy](https://github.com/wg-easy/wg-easy)
