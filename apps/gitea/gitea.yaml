@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gitea
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - chart: gitea
+      repoURL: https://dl.gitea.com/charts/
+      targetRevision: 10.1.1
+      helm:
+        valuesObject:
+          persistence:
+            size: 1Gi
+          postgresql-ha:
+            enabled: false
+          postgresql:
+            enabled: true
+            primary:
+              persistence:
+                size: 1Gi
+          redis-cluster:
+            persistence:
+              size: 1Gi
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: gitea

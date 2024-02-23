@@ -1,0 +1,5 @@
+pm_api_token_id     = "pve"
+pm_api_token_secret = ""
+pm_api_url          = "https://proxmox.example.com:8006/api2/json"
+pm_tls_insecure     = false
+vm_ssh_key          = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDf"
