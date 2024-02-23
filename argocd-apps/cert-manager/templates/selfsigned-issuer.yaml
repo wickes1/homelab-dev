@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: {{ .Values.namespace }}
+  argocd.argoproj.io/sync-wave: "-1"
 ---
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
@@ -15,13 +16,13 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: my-selfsigned-ca
+  name: {{ .Values.commonName }}
   namespace: {{ .Values.namespace }}
   annotations:
     argocd.argoproj.io/sync-wave: "2"
 spec:
   isCA: true
-  commonName: my-selfsigned-ca
+  commonName: {{ .Values.commonName }}
   secretName: root-secret
   privateKey:
     algorithm: ECDSA
@@ -32,10 +33,9 @@ spec:
     group: cert-manager.io
 ---
 apiVersion: cert-manager.io/v1
-kind: Issuer
+kind: ClusterIssuer
 metadata:
   name: my-ca-issuer
-  namespace: {{ .Values.namespace }}
   annotations:
     argocd.argoproj.io/sync-wave: "1"
 spec:

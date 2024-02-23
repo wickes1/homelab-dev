@@ -1,4 +1,5 @@
 namespace: cert-manager
+commonName: k8s.local
 spec:
   source:
     repoURL: https://charts.jetstack.io
