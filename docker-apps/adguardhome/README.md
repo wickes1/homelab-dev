@@ -16,3 +16,13 @@ systemctl reload-or-restart systemd-resolved
 DNS=127.0.0.1
 DNSStubListener=no
 ```
+
+## Filtering Rule
+
+[DNS filtering rules syntax | AdGuard DNS Knowledge Base](https://adguard-dns.io/kb/general/dns-filtering-syntax/)
+
+```plaintext
+||k8s.local^$dnsrewrite=1.2.3.4
+```
+
+This entails mapping all subdomains of `k8s.local` to the IP address `1.2.3.4`, which serves as the load balancing IP for the nginx ingress controller. As a result, you establish internal DNS resolution for `k8s.local`.
