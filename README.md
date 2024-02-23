@@ -22,24 +22,37 @@ You can't really get started with this repository, but you can use the code and 
 ## Hardware
 
 - My "Powerful" Proxmox Node
-  - 5700X
-  - 64 GB RAM
-  - 128 GB SSD (OS)
-  - 1 TB SSD (Windows, yes I have a Windows OS dual booted)
-  - 1 TB SSD (The old SSD for my storage)
-  - 3 * 2 TB HDD (Not yet raided or ZFSed, but soon! Currently, they are happy with simple directory)
-  - 128 GB USB (Ventoy for emergency booting)
-  - GTX 660 (Just for my Windows OS, poor 5700X doesn't have integrated graphics)
-  - A Pi4B attached to it for PiKVM! (I love it, the reason why my Proxmox is die hard.)
+  - Specs
+    - 5700X
+    - 64 GB RAM
+    - 128 GB SSD (OS)
+    - 1 TB SSD (Windows, yes I have a Windows OS dual booted)
+    - 1 TB SSD (The old SSD for my storage)
+    - 3 * 2 TB HDD (Not yet raided or ZFSed, but soon! Currently, they are happy with simple directory)
+    - 128 GB USB (Ventoy for emergency booting)
+    - GTX 660 (Just for my Windows OS, poor 5700X doesn't have integrated graphics)
+    - A Pi4B attached to it for PiKVM! (I love it, the reason why my Proxmox is die hard.)
+    - I bought the PCIe → M.2 adapter, that's why I can have so many SSDs!
+  - What's (will be) running on it?
+    - (production) kubernetes cluster
+    - heavy workloads
 
 - My Always On Proxmox Node
-  - N5105
-  - 32 GB RAM
-  - 4 * 2.5Gb LAN
+  - Specs
+    - N5105
+    - 32 GB RAM
+    - 4 * 2.5Gb LAN
+  - What's already running on it?
+    - Nginx Proxy Manager (Routing for my domain)
+    - wg-easy (Most easy way to setup your WireGuard VPN)
+    - AdGuard Home (I utilize the DNS rewrite for internal domain)
 
 - My Raspberry Pi 4Bs (Thx to my friend [ac5tin](https://github.com/ac5tin) 😘)
   - Pi4B 8G * 2
   - Pi4B 4G * 2
+
+- My Switch TP-Link TL-SG2016K
+  - 16 Port 1 Gigabit Switch (You never need that much ports, do you? 😂)
 
 ## Current Tech Stack
 
