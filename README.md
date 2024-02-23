@@ -6,6 +6,7 @@
   - [Table of Contents](#table-of-contents)
   - [About ](#about-)
   - [Getting Started ](#getting-started-)
+  - [Hardware](#hardware)
   - [Current Tech Stack](#current-tech-stack)
   - [Tools](#tools)
   - [Stuff deployed behind the scenes](#stuff-deployed-behind-the-scenes)
@@ -17,6 +18,28 @@ This is the development repository for my HomeLab. It contains all the code and 
 ## Getting Started <a name = "getting_started"></a>
 
 You can't really get started with this repository, but you can use the code and configurations as a reference for your own HomeLab.
+
+## Hardware
+
+- My "Powerful" Proxmox Node
+  - 5700X
+  - 64 GB RAM
+  - 128 GB SSD (OS)
+  - 1 TB SSD (Windows, yes I have a Windows OS dual booted)
+  - 1 TB SSD (The old SSD for my storage)
+  - 3 * 2 TB HDD (Not yet raided or ZFSed, but soon! Currently, they are happy with simple directory)
+  - 128 GB USB (Ventoy for emergency booting)
+  - GTX 660 (Just for my Windows OS, poor 5700X doesn't have integrated graphics)
+  - A Pi4B attached to it for PiKVM! (I love it, the reason why my Proxmox is die hard.)
+
+- My Always On Proxmox Node
+  - N5105
+  - 32 GB RAM
+  - 4 * 2.5Gb LAN
+
+- My Raspberry Pi 4Bs (Thx to my friend [ac5tin](https://github.com/ac5tin) 😘)
+  - Pi4B 8G * 2
+  - Pi4B 4G * 2
 
 ## Current Tech Stack
 
@@ -40,4 +63,6 @@ You can't really get started with this repository, but you can use the code and 
 - [AdGuard Home](https://github.com/AdguardTeam/AdGuardHome)
 - [PiKVM](https://github.com/pikvm/pikvm)
 - [PiVPN](https://github.com/pivpn/pivpn)
-- [wg-easy](https://github.com/wg-easy/wg-easy)
+- [wg-easy with nginx](https://github.com/wg-easy/wg-easy/wiki/Using-WireGuard-Easy-with-nginx-SSL)
+- [Portainer with docker standalone agent](https://www.portainer.io/)
+- [Nginx Proxy Manager]( https://nginxproxymanager.com/)
