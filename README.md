@@ -6,6 +6,7 @@
   - [Table of Contents](#table-of-contents)
   - [About ](#about-)
   - [Getting Started ](#getting-started-)
+  - [Folder Structure](#folder-structure)
   - [Hardware](#hardware)
   - [Current Tech Stack](#current-tech-stack)
   - [Tools](#tools)
@@ -17,7 +18,15 @@ This is the development repository for my HomeLab. It contains all the code and 
 
 ## Getting Started <a name = "getting_started"></a>
 
-You can't really get started with this repository, but you can use the code and configurations as a reference for your own HomeLab.
+You can't really get started with this repository, but you can use the code and configurations as a reference for your own HomeLab
+
+## Folder Structure
+
+- `pve01` - Contain the Ansible configurations of my kubernetes cluster by kubespray
+- `docker-apps` - Contains all the standalone docker-compose files for the LXC containers
+- `argocd-apps` - ArgoCD managed applications
+- `k8s-apps` - YAML k8s manifests
+- `terraform` - Terraform configurations with Proxmox Provider and Cloud-Init for supervising my VM clusters
 
 ## Hardware
 
