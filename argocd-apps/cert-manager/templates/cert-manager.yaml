@@ -7,8 +7,8 @@ spec:
   project: default
   sources:
     - chart: cert-manager
-      repoURL: https://charts.jetstack.io
-      targetRevision: v1.14.3
+      repoURL: {{ .Values.spec.source.repoURL }}
+      targetRevision: { { .Values.spec.source.targetRevision } }
   destination:
-    server: https://kubernetes.default.svc
+    server: {{ .Values.spec.destination.server }}
     namespace: cert-manager

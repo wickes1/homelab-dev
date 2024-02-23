@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: cert-manager
+  name: sandbox
 ---
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
@@ -14,7 +14,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: my-selfsigned-ca
-  namespace: cert-manager
+  namespace: sandbox
 spec:
   isCA: true
   commonName: my-selfsigned-ca
@@ -31,7 +31,7 @@ apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
   name: my-ca-issuer
-  namespace: cert-manager
+  namespace: sandbox
 spec:
   ca:
     secretName: root-secret
