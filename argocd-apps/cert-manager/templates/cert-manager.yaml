@@ -7,8 +7,8 @@ spec:
   project: default
   sources:
     - chart: cert-manager
-      repoURL: {{ .Values.spec.source.repoURL }}
-      targetRevision: { { .Values.spec.source.targetRevision } }
+      repoURL: {{  .Values.spec.source.repoURL  }}
+      targetRevision: {{ .Values.spec.source.targetRevision }}
   destination:
-    server: {{ .Values.spec.destination.server }}
+    server: {{  .Values.spec.destination.server }}
     namespace: cert-manager
