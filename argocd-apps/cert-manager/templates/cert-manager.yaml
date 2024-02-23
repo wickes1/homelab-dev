@@ -11,6 +11,10 @@ spec:
     - chart: cert-manager
       repoURL: {{  .Values.spec.source.repoURL  }}
       targetRevision: {{ .Values.spec.source.targetRevision }}
+      helm:
+          parameters:
+            - name: installCRDs
+              value: {{ .Values.spec.helm.installCRDs }}
   destination:
     server: {{  .Values.spec.destination.server }}
     namespace: {{ .Values.namespace }}
