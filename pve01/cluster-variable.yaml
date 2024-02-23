@@ -1,0 +1,25 @@
+# new cluster
+# ansible-playbook -i inventory/pve01/hosts.yaml -e @inventory/pve01/cluster-variable.yaml --become --become-user=root -u ubuntu --key-file ~/.ssh/wickes-homelab cluster.yml
+# upgrade cluster
+# ansible-playbook -i inventory/pve01/hosts.yaml -e @inventory/pve01/cluster-variable.yaml --become --become-user=root -u ubuntu --key-file ~/.ssh/wickes-homelab upgrade-cluster.yml
+
+kube_version: v1.28.6
+helm_enabled: true
+kube_proxy_mode: iptables
+metallb_enabled: false
+
+### CNI
+kube_network_plugin: cilium
+cilium_version: v1.15.1
+cilium_ipam_mode: cluster-pool # IP address management mode for v1.9+. https://docs.cilium.io/en/v1.9/concepts/networking/ipam/
+cilium_enable_hubble: true ## enable support hubble in cilium
+cilium_hubble_install: true ## install hubble-relay, hubble-ui
+cilium_hubble_tls_generate: true ## install hubble-certgen and generate certificates
+cilium_enable_hubble_metrics: true
+cilium_hubble_metrics:
+  - dns
+  - drop
+  - tcp
+  - flow
+  - icmp
+  - http
