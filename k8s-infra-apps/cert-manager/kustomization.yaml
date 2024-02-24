@@ -1,5 +1,5 @@
-# kustomize build . --enable-helm | kubectl apply -f -
-# kustomize build . --enable-helm | kubectl delete -f -
+# kustomize build . --enable-helm | kubectl apply -f -; rm -r ./charts
+# kustomize build . --enable-helm | kubectl delete -f -; rm -r ./charts
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: kube-system
