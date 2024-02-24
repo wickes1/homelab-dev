@@ -11,6 +11,9 @@
   - [Current Tech Stack](#current-tech-stack)
   - [Tools](#tools)
   - [Stuff deployed behind the scenes](#stuff-deployed-behind-the-scenes)
+  - [My Journey Notes](#my-journey-notes)
+    - [General Tips](#general-tips)
+    - [Cert Manager](#cert-manager)
 
 ## About <a name = "about"></a>
 
@@ -88,3 +91,27 @@ You can't really get started with this repository, but you can use the code and 
 - [wg-easy with nginx](https://github.com/wg-easy/wg-easy/wiki/Using-WireGuard-Easy-with-nginx-SSL)
 - [Portainer with docker standalone agent](https://www.portainer.io/)
 - [Nginx Proxy Manager]( https://nginxproxymanager.com/)
+
+## My Journey Notes
+
+### General Tips
+
+When working with `Helm` or `Kustomize`, always try template or dry-run before your git commit.
+
+```bash
+helm template .
+kustomize build .
+
+helm install test-release . --dry-run --debug
+```
+
+---
+
+For first time installed apps, always deploy on an individual namespace so that you can `kubectl delete namesapce` to clean up everything.
+
+---
+
+### Cert Manager
+
+- When using `helm`, do not install CRD with `installCRDs`,  use the `kubectl` approach instead, e.g. `kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.3/cert-manager.crds.yaml`, because the `installCRDs` provided by `helm` is not up-to-date.
+- Deploy in namespace `kube-system`, do not deploy in `cert-manager`. Check [cert-manager fails to work correctly due to insufficient permissions on v2.18.0 · Issue #8393 · kubernetes-sigs/kubespray](https://github.com/kubernetes-sigs/kubespray/issues/8393)
