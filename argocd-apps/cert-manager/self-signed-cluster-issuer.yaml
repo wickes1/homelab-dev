@@ -1,8 +1,6 @@
-apiVersion: v1
-kind: Namespace
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
 metadata:
-  name: cert-manager
-  # Kustomize local deploy will ignored the resource with this annotation
-  # annotations:
-  #   argocd.argoproj.io/sync-wave: "-1"
-spec: {}
+  name: self-signed-issuer
+spec:
+  selfSigned: {}
