@@ -10,8 +10,10 @@ helmCharts:
     namespace: cert-manager
     repo: https://charts.jetstack.io
     version: v1.14.3
-    valuesInline:
-      installCRDs: true
+    # Not working!
+    # valuesInline:
+    #   installCRDs: true
 
 resources:
+  - https://github.com/cert-manager/cert-manager/releases/download/v1.14.3/cert-manager.crds.yaml
   - self-signed-cluster-issuer.yaml
