@@ -28,8 +28,7 @@ You can't really get started with this repository, but you can use the code and 
 - `pve01` - Contain the Ansible configurations of my kubernetes cluster by kubespray
 - `docker-apps` - Contains all the standalone docker-compose files for the LXC containers
 - `argocd-apps` - ArgoCD managed applications
-- `k8s-apps` - YAML k8s manifests
-- `k8s-infra-apps` - YAML k8s manifests for infrastructural components
+- `k8s-infra-apps` - YAML k8s manifests with kustomize for infrastructural components
 - `terraform` - Terraform configurations with Proxmox Provider and Cloud-Init for supervising my VM clusters
 
 ## Hardware
