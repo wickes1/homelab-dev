@@ -4,9 +4,14 @@ metadata:
   name: longhorn-ingress
   namespace: longhorn-system
   annotations:
-    cert-manager.io/cluster-issuer: self-signed-cluster-issuer
+    cert-manager.io/cluster-issuer: self-signed-ca-issuer
     nginx.ingress.kubernetes.io/ssl-passthrough: "true"
     nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/href: "https://longhorn.k8s.local"
+    gethomepage.dev/group: App
+    gethomepage.dev/icon: longhorn.svg
+    gethomepage.dev/name: Longhorn
 spec:
   ingressClassName: nginx
   rules:
