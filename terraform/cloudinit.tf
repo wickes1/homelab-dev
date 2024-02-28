@@ -18,7 +18,7 @@ resource "proxmox_vm_qemu" "k8s-cp" {
   numa    = true
   vcpus   = 0
   cpu     = "host"
-  memory  = 4096
+  memory  = 8192
   name    = "k8s-cp-0${count.index + 1}"
 
   cloudinit_cdrom_storage = "nvme0n1"
@@ -30,7 +30,7 @@ resource "proxmox_vm_qemu" "k8s-cp" {
       scsi0 {
         disk {
           storage = "nvme0n1"
-          size    = 12
+          size    = 20
         }
       }
     }
@@ -78,7 +78,7 @@ resource "proxmox_vm_qemu" "k8s-wn" {
       scsi0 {
         disk {
           storage = "nvme0n1"
-          size    = 12
+          size    = 20
         }
       }
     }
