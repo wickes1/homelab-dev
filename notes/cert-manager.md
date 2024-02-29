@@ -1,0 +1,5 @@
+# Cert Manager
+
+- When using `helm`, do not install CRD with `installCRDs`, use the `kubectl` approach instead, e.g. `kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.3/cert-manager.crds.yaml`, because the `installCRDs` provided by `helm` is not up-to-date.
+- Deploy in namespace `kube-system`, do not deploy in `cert-manager`. Check [cert-manager fails to work correctly due to insufficient permissions on v2.18.0 · Issue #8393 · kubernetes-sigs/kubespray](https://github.com/kubernetes-sigs/kubespray/issues/8393)
+- Create a `self-signed-cluster-issuer` to issue a `self-signed-ca` certificate, then create a `self-signed-ca-issuer` to issue certificates for your apps. Copy the `ca.crt` from the `self-signed-ca` secret to your local machine and install it as a trusted root certificate. This is useful for local development and testing. For Arch user, `sudo trust anchor k8s-local.crt` to install the certificate as a trusted root certificate. For Chrome, you may need to manually import the certificate to the browser.

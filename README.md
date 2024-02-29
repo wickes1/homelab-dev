@@ -12,8 +12,9 @@
   - [Tools](#tools)
   - [Stuff deployed behind the scenes](#stuff-deployed-behind-the-scenes)
   - [My Journey Notes](#my-journey-notes)
+    - [Notes](#notes)
+    - [Convention / Practices](#convention--practices)
     - [General Tips](#general-tips)
-    - [Cert Manager](#cert-manager)
 
 ## About <a name = "about"></a>
 
@@ -84,6 +85,8 @@ You can't really get started with this repository, but you can use the code and 
 - [Kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)
 - [Helm](https://github.com/helm/helm)
 - [k9s](https://github.com/derailed/k9s)
+- [vault](https://developer.hashicorp.com/vault/docs/commands)
+- [GitHub - ahmetb/kubectx: Faster way to switch between clusters and namespaces in kubectl](https://github.com/ahmetb/kubectx)
 
 ## Stuff deployed behind the scenes
 
@@ -95,6 +98,15 @@ You can't really get started with this repository, but you can use the code and 
 - [Nginx Proxy Manager]( https://nginxproxymanager.com/)
 
 ## My Journey Notes
+
+### Notes
+
+[Cert Manager](notes/cert-manager.md)
+[Secrets Management](notes/secrets-management.md)
+
+### Convention / Practices
+
+- Always using `number` when specifying ports in `Service` and `Ingress` to avoid confusion.
 
 ### General Tips
 
@@ -112,9 +124,3 @@ helm install test-release . --dry-run --debug
 For first time installed apps, always deploy on an individual namespace so that you can `kubectl delete namesapce` to clean up everything.
 
 ---
-
-### Cert Manager
-
-- When using `helm`, do not install CRD with `installCRDs`, use the `kubectl` approach instead, e.g. `kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.3/cert-manager.crds.yaml`, because the `installCRDs` provided by `helm` is not up-to-date.
-- Deploy in namespace `kube-system`, do not deploy in `cert-manager`. Check [cert-manager fails to work correctly due to insufficient permissions on v2.18.0 · Issue #8393 · kubernetes-sigs/kubespray](https://github.com/kubernetes-sigs/kubespray/issues/8393)
-- Create a `self-signed-cluster-issuer` to issue a `self-signed-ca` certificate, then create a `self-signed-ca-issuer` to issue certificates for your apps. Copy the `ca.crt` from the `self-signed-ca` secret to your local machine and install it as a trusted root certificate. This is useful for local development and testing. For Arch user, `sudo trust anchor k8s-local.crt` to install the certificate as a trusted root certificate. For Chrome, you may need to manually import the certificate to the browser.
