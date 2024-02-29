@@ -1,25 +1,31 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: homepage
-  namespace: default
-  labels:
-    app.kubernetes.io/name: homepage
-  annotations:
-    gethomepage.dev/description: Dynamically Detected Homepage
-    gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Cluster Management
-    gethomepage.dev/icon: homepage.png
-    gethomepage.dev/name: Homepage
+    name: homepage
+    labels:
+        app.kubernetes.io/name: homepage
+    annotations:
+        cert-manager.io/cluster-issuer: self-signed-ca-issuer
+        nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+        nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+        gethomepage.dev/enabled: "true"
+        gethomepage.dev/group: App
+        gethomepage.dev/icon: homepage.png
+        gethomepage.dev/name: Homepage
 spec:
-  rules:
-    - host: "homepage.my.network"
-      http:
-        paths:
-          - path: "/"
-            pathType: Prefix
-            backend:
-              service:
-                name: homepage
-                port:
-                  number: 3000
+    ingressClassName: nginx
+    rules:
+        - host: homepage.k8s.local
+          http:
+              paths:
+                  - path: "/"
+                    pathType: Prefix
+                    backend:
+                        service:
+                            name: homepage
+                            port:
+                                number: 3000
+    tls:
+        - hosts:
+              - homepage.k8s.local
+          secretName: homepage-tls-secret

@@ -1,0 +1,43 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/service-widgets
+
+- datetime:
+      text_size: xl
+      format:
+          timeStyle: short
+
+- kubernetes:
+      cluster:
+          show: true
+          cpu: true
+          memory: true
+          showLabel: true
+          label: cluster
+      nodes:
+          show: true
+          cpu: true
+          memory: true
+          showLabel: true
+
+- openmeteo:
+      label: Home # optional
+      latitude: "{{ HOMEPAGE_VAR_LATITUDE }}"
+      longitude: "{{ HOMEPAGE_VAR_LONGITUDE }}"
+      timezone: "{{  HOMEPAGE_VAR_TIMEZONE }}"
+      units: metric # or metric
+      cache: 5
+
+# - search:
+#       provider: duckduckgo
+#       target: _blank
+
+# - longhorn:
+#     # Show the expanded view
+#     expanded: true
+#     # Shows a node representing the aggregate values
+#     total: true
+#     # Shows the node names as labels
+#     labels: true
+#     # Show the nodes
+#     nodes: true

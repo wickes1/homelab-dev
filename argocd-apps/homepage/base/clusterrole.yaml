@@ -22,13 +22,13 @@ rules:
     verbs:
       - get
       - list
-  - apiGroups:
-      - traefik.containo.us
-    resources:
-      - ingressroutes
-    verbs:
-      - get
-      - list
+  # - apiGroups:
+  #     - traefik.containo.us
+  #   resources:
+  #     - ingressroutes
+  #   verbs:
+  #     - get
+  #     - list
   - apiGroups:
       - metrics.k8s.io
     resources:

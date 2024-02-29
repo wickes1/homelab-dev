@@ -1,20 +1,80 @@
-# Direct deploy with kubectl apply -k .
-# kustomize build . | kubectl apply -f -
-# kustomize build base
-# kustomize build .
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 namespace: apps
 
-patches:
-- path: ingress.patch.yaml
-- patch: |-
-    - op: replace
-      path: /spec/rules/0/host
-      value: homepage.k8s.local
-  target:
-    kind: Ingress
-    name: homepage
 resources:
-- base
+    - base
+    - externalsecret.yaml
+
+configMapGenerator:
+    - name: homepage
+      files:
+          - ./config/bookmarks.yaml
+          - ./config/docker.yaml
+          - ./config/kubernetes.yaml
+          - ./config/services.yaml
+          - ./config/settings.yaml
+          - ./config/widgets.yaml
+          - ./config/custom.js
+          - ./config/custom.css
+      options:
+          disableNameSuffixHash: true
+          labels:
+              app.kubernetes.io/name: homepage
+              app.kubernetes.io/instance: homepage
+
+images:
+    - name: ghcr.io/gethomepage/homepage
+      newTag: v0.8.8
+
+patches:
+    - target:
+          group: apps
+          kind: Deployment
+          version: v1
+      patch: |-
+          - op: add
+            path: /metadata/annotations
+            value:
+              configmap.reloader.stakater.com/reload: "homepage"
+              secret.reloader.stakater.com/reload: "homepage-secret"
+
+          # Use with opaque secrets
+          - op: add
+            path: /spec/template/spec/containers/0/envFrom
+            value:
+              - secretRef:
+                    name: homepage-secret
+
+          # Use with secrets-store-csi-driver
+          # - op: add
+          #   path: /spec/template/spec/volumes
+          #   value:
+          #     - name: secrets-store-inline
+          #       csi:
+          #         driver: secrets-store.csi.k8s.io
+          #         readOnly: true
+          #         volumeAttributes:
+          #           secretProviderClass: "internal-vault-provider"
+          # - op: add
+          #   path:  /spec/template/spec/containers/0/volumeMounts
+          #   value:
+          #     - name: secrets-store-inline
+          #       mountPath: /app/config/secrets
+          #       readOnly: true
+
+          # Use with vault agent injector
+          # Not working, see https://github.com/hashicorp/vault-k8s/issues/186
+          # - op: add
+          #   path: /spec/template/metadata/annotations
+          #   value:
+          #     vault.hashicorp.com/agent-inject: 'true'
+          #     vault.hashicorp.com/role: 'homepage'
+          #     vault.hashicorp.com/agent-inject-secret-homepage-secret: 'internal/data/homepage'
+          #     # Environment variable export template
+          #     vault.hashicorp.com/agent-inject-template-config: |
+          #       # {{- with secret "internal/data/homepage" -}}
+          #       #   export HOMEPAGE_VAR_PROXMOX_PASSWORD="{{ .Data.data.HOMEPAGE_VAR_PROXMOX_PASSWORD }}"
+          #       #   export HOMEPAGE_VAR_PROXMOX_USERNAME="{{ .Data.data.HOMEPAGE_VAR_PROXMOX_USERNAME }}"
+          #       # {{- end }}

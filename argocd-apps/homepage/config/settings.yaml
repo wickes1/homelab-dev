@@ -1,0 +1,30 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/settings
+
+title: HomeLab Dev
+
+background:
+    image: https://images.unsplash.com/photo-1502790671504-542ad42d5189?auto=format&fit=crop&w=2560&q=80
+    blur: sm # sm, "", md, xl... see https://tailwindcss.com/docs/backdrop-blur
+    saturate: 50 # 0, 50, 100... see https://tailwindcss.com/docs/backdrop-saturate
+    brightness: 50 # 0, 50, 75... see https://tailwindcss.com/docs/backdrop-brightness
+    opacity: 50 # 0-100
+
+theme: dark
+color: slate
+useEqualHeights: true
+
+providers:
+    longhorn:
+        url: https://longhorn.k8s.local
+
+layout:
+    Infrastructure:
+        header: true
+        style: row
+        columns: 4
+    App:
+        header: true
+        style: row
+        columns: 4

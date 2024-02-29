@@ -1,0 +1,33 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/services
+# https://github.com/walkxcode/dashboard-icons
+
+- Infrastructure:
+      - AdGuard:
+            icon: adguard-home.svg
+            href: &adguard "{{HOMEPAGE_VAR_ADGUARD_HREF}}"
+            widget:
+                type: adguard
+                url: *adguard
+                username: "{{HOMEPAGE_VAR_ADGUARD_USERNAME}}"
+                password: "{{HOMEPAGE_VAR_ADGUARD_PASSWORD}}"
+      - NPM:
+            icon: nginx-proxy-manager.svg
+            href: &npm "{{HOMEPAGE_VAR_NPM_HREF}}"
+            widget:
+                type: npm
+                url: *npm
+                username: "{{HOMEPAGE_VAR_NPM_USERNAME}}"
+                password: "{{HOMEPAGE_VAR_NPM_PASSWORD}}"
+      - PVE01:
+            icon: proxmox.svg
+            href: &pve01 "{{HOMEPAGE_VAR_PROXMOX_HREF}}"
+            widget:
+                type: proxmox
+                url: *pve01
+                username: "{{HOMEPAGE_VAR_PROXMOX_USERNAME}}"
+                password: "{{HOMEPAGE_VAR_PROXMOX_PASSWORD}}"
+      - WireGuard:
+            icon: wireguard.svg
+            href: "{{HOMEPAGE_VAR_WIREGUARD_HREF}}"
