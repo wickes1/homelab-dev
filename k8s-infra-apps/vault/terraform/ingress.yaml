@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+    name: vault-ingress
+    namespace: vault
+    annotations:
+        cert-manager.io/cluster-issuer: self-signed-ca-issuer
+        nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+        nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+        gethomepage.dev/enabled: "true"
+        gethomepage.dev/href: "https://vault.k8s.local"
+        gethomepage.dev/group: App
+        gethomepage.dev/icon: vault.svg
+        gethomepage.dev/name: Vault
+spec:
+    ingressClassName: nginx
+    rules:
+        - host: vault.k8s.local
+          http:
+              paths:
+                  - pathType: Prefix
+                    path: /
+                    backend:
+                        service:
+                            name: vault-ui
+                            port:
+                                number: 8200
+    tls:
+        - hosts:
+              - vault.k8s.local
+          secretName: vault-tls-secret

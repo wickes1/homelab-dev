@@ -1,0 +1,4 @@
+server:
+    dataStorage:
+        enabled: true
+        size: 1Gi
