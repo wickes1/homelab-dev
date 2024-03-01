@@ -87,6 +87,7 @@ You can't really get started with this repository, but you can use the code and 
 - [k9s](https://github.com/derailed/k9s)
 - [vault](https://developer.hashicorp.com/vault/docs/commands)
 - [GitHub - ahmetb/kubectx: Faster way to switch between clusters and namespaces in kubectl](https://github.com/ahmetb/kubectx)
+- [GitHub - aquasecurity/trivy: Find vulnerabilities, misconfigurations, secrets, SBOM in containers, Kubernetes, code repositories, clouds and more](https://github.com/aquasecurity/trivy)
 
 ## Stuff deployed behind the scenes
 
@@ -101,8 +102,17 @@ You can't really get started with this repository, but you can use the code and 
 
 ### Notes
 
-[Cert Manager](notes/cert-manager.md)
-[Secrets Management](notes/secrets-management.md)
+- [Apps](./notes/apps.md)
+- [Argocd](./notes/argocd.md)
+- [Cert-Manager](./notes/cert-manager.md)
+- [Helm](./notes/helm.md)
+- [Kubernetes](./notes/kubernetes.md)
+- [Kubespray](./notes/kubespray.md)
+- [Linux](./notes/linux.md)
+- [Opnsense](./notes/opnsense.md)
+- [Proxmox](./notes/proxmox.md)
+- [Secrets-Management](./notes/secrets-management.md)
+- [Terraform](./notes/terraform.md)
 
 ### Convention / Practices
 
